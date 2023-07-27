@@ -21,21 +21,29 @@ function Transactions (){
     // sidefunctions
     // return
     
-    console.log(transactions);
-    let transactionsList = transactions.map(item=>{
-        return(
-            <p>(Item.category):(Item description)</p>
-        )
-    })
-    
+
+   
     
     return (
-        <>
-        
-            <h1>These are the following transactions</h1>
-            <p>transaction category:transaction description</p>
-               {transactionsList}
-        </>
+        <table>
+        <thead>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+        </thead>
+        <tbody>
+            {transactions.map((transaction => (
+                <tr>
+                    <td>{transaction.description}</td>
+                    <td>{transaction.amount}</td>
+                    <td>{transaction.category}</td>
+                    <td>{transaction.date}</td>
+                </tr>
+            )
+          ))} 
+        </tbody>
+    </table>
     )
 }
 export default Transactions
