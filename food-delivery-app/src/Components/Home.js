@@ -9,17 +9,19 @@ const Home = () => {
   }, []);
 
   const fetchData = () => {
-    fetch("http://localhost:3000/meals")
+    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
       .then((response) => response.json())
       .then((responseData) => {
-        if (Array.isArray(responseData)) {
-          // Extract meal names and update the state
-          setMealData(responseData);
-          // Fetch images for each meal one by one using a loop
-          fetchMealImages(responseData);
-        } else {
-          setMealData([]);
-        }
+        console.log(responseData);
+        setMealData(responseData.meals)
+        // if (Array.isArray(responseData)) {
+        //   // Extract meal names and update the state
+        //   setMealData(responseData);
+        //   // Fetch images for each meal one by one using a loop
+        //   fetchMealImages(responseData);
+        // } else {
+        //   setMealData([]);
+        // }
       })
       .catch((error) => console.error("Error fetching data: ", error));
   };
@@ -53,6 +55,8 @@ const Home = () => {
     fetchNextImage();
   };
 
+  console.log(mealData);
+
   return (
     <div>
       <h1>Meal Page</h1>
@@ -61,7 +65,7 @@ const Home = () => {
         {mealData.map((meal, index) => (
           <li key={index}>
             <img
-              src={mealImages[index]}
+              src={meal.strMealThumb}
               alt={`Meal ${index + 1}`}
               style={{ width: "100px" }}
             />
