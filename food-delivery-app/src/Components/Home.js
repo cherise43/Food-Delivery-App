@@ -9,7 +9,7 @@ const Home = () => {
   }, []);
 
   const fetchData = () => {
-    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+    fetch("http://localhost:3000/meals")
       .then((response) => response.json())
       .then((responseData) => {
         if (Array.isArray(responseData)) {
