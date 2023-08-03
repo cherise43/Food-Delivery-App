@@ -9,7 +9,7 @@ const Home = () => {
   }, []);
 
   const fetchData = () => {
-    fetch("http://localhost:3000/meals")
+    fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
       .then((response) => response.json())
       .then((responseData) => {
         if (Array.isArray(responseData)) {
@@ -56,6 +56,7 @@ const Home = () => {
   return (
     <div>
       <h1>Meal Page</h1>
+      <div id="meals">
       <ul>
         {mealData.map((meal, index) => (
           <li key={index}>
@@ -68,6 +69,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };

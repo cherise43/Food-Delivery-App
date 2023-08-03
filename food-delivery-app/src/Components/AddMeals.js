@@ -17,7 +17,7 @@ const AddMeals = () => {
 
     // Make the PATCH request to add the new meal
     fetch("http://localhost:3000/meals", {
-      method: "PATCH",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
